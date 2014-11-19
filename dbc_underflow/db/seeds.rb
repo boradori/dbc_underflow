@@ -7,6 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'faker'
 
-5.times do
-  Question.create!(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraph)
-end
+5.times {
+  question = Question.create!(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraph)
+  7.times {
+    answer = Answer.create!(content: Faker::Lorem.characters)
+    # answer.question = question
+    question.answers << answer
+
+  }
+}
+
+# Question.create!(title: "Hello", content: "hi")
+# Answer.create!(content: "Asdfasldkfjl", question_id: 1)
+
+

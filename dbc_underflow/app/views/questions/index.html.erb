@@ -1,4 +1,15 @@
-<% @questions.each do |question| %>
-  <h1><%= question.title %></h1>
+<div class="row">
+  <div class="large-12 columns">
+    <h1>DBC Underflow</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <% @questions.each do |question| %>
+    <h3><%= link_to "#{question.title}", question_path(question) %></h3>
     <% end %>
+  </div>
+</div>
+
 
