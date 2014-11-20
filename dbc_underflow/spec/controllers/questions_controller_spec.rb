@@ -17,7 +17,6 @@ RSpec.describe QuestionsController, :type => :controller do
   describe 'GET #show' do
     context 'displays a question' do
       it 'renders the :show view' do
-
         question = Question.create!(title: "yooooo", content: "lo")
         get :show, id: question.id
         expect(response).to render_template(:show)

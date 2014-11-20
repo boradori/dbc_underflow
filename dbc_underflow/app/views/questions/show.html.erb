@@ -5,27 +5,37 @@
 </div>
 
 <div class="row">
-  <div class="large-12 columns">
+  <div class="large-1 columns" id="question-vote">
+    <%= @question.votes %>
+  </div>
+  <div class="large-11 columns">
     <p>
       <strong>Title:</strong>
       <%= @question.title %>
     </p>
-
+      <%= link_to "Like", question_upvote_path(@question), method: :patch, :class => "tiny button secondary" %>
+      <%= link_to "Dislike", question_downvote_path(@question), method: :patch, :class => "tiny button secondary" %>
+      <%= link_to 'Edit', edit_question_path(@question), :class => "tiny button secondary" %>
+      <%= link_to 'Delete', question_path(@question),
+                            method: :delete, data: { confirm: 'Fosho?' }, :class => "tiny button secondary" %>
     <p>
       <strong>Content:</strong>
       <%= @question.content %>
     </p>
-      <%= link_to 'Edit', edit_question_path(@question) %>
-      <%= link_to 'Delete', question_path(@question),
-                            method: :delete, data: { confirm: 'Fosho?' } %>
+
   </div>
 </div>
 </br>
 <div class="row">
   <div class="large-12 columns">
     <ol>
-      <% @question.answers.each do |answer| %>
-        <li><%= answer.content %></p></li>
+      <% @question.answers.order(votes: :desc).each do |answer| %>
+        <p><li><%= link_to answer.content, edit_question_answer_path(@question, answer) %></p></li>
+          <div class="large-1 columns" id="answer-vote">
+       <%= answer.votes %>
+  </div>
+      <%= link_to "Like", question_answer_upvote_path(@question, answer), method: :patch, :class => "tiny button secondary" %>
+      <%= link_to "Dislike", question_answer_downvote_path(@question, answer), method: :patch, :class => "tiny button secondary" %>
       <% end %>
     </ol>
   </div>

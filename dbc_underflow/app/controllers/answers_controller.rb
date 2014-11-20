@@ -43,6 +43,20 @@ class AnswersController < ApplicationController
     redirect_to question_path(@question)
   end
 
+  def up_vote
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.find(params[:id])
+    @answer.up_vote
+    redirect_to @question
+  end
+
+  def down_vote
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.find(params[:id])
+    @answer.down_vote
+    redirect_to @question
+  end
+
   private
     def answer_params
       params.require(:answer).permit(:content)
