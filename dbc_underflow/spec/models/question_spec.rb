@@ -1,5 +1,32 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Question, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe Question do
+  it "has none to begin with" do
+    expect(Question.count).to eq 0
+  end
+
+  it "has one after adding one" do
+    Question.create(title: "Fudge", content: "Me")
+    expect(Question.count).to eq 1
+  end
+
+  it "should not add if title character is less than 5" do
+    Question.create(title: "Ahh", content: "hmmm")
+    expect(Question.count).to eq 0
+  end
+
+  it "title and content should be present" do
+    question = Question.create(title: "hohoho", content: "My skdlajf")
+    expect(question.content) != nil
+  end
+
+  it "should not accept an empty title and content" do
+    Question.create(content: nil)
+    expect(Question.count).to eq 0
+  end
+
+
+  describe Question do
+    it { should have_many(:answers) }
+  end
 end

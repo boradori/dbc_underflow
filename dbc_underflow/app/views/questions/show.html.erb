@@ -15,20 +15,32 @@
       <strong>Content:</strong>
       <%= @question.content %>
     </p>
+      <%= link_to 'Edit', edit_question_path(@question) %>
+      <%= link_to 'Delete', question_path(@question),
+                            method: :delete, data: { confirm: 'Fosho?' } %>
   </div>
 </div>
-
+</br>
 <div class="row">
   <div class="large-12 columns">
-     <% @question.answers.each_with_index do |answer, index| %>
-        <p><%= index %>. <%= answer.content %></p>
+    <ol>
+      <% @question.answers.each do |answer| %>
+        <li><%= answer.content %></p></li>
       <% end %>
+    </ol>
   </div>
 </div>
 
+<div class="row">
+  <div class="large-12 columns">
+    <%= link_to 'Answer', new_question_answer_path(@question), :class => "[small] button" %>
+  </div>
+</div>
 
 <div class="row">
   <div class="large-12 columns">
-    <%= link_to 'Back', :back %>
+    <%= link_to 'Back', questions_path, :class => "[small] button" %>
+  </div>
 </div>
+
 
