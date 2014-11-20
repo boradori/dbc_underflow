@@ -25,6 +25,18 @@ RSpec.describe Question do
     expect(Question.count).to eq 0
   end
 
+  it "should add a vote when clicking up_vote" do
+    question = Question.create(title: "fuckkk", content: "You")
+    question.up_vote
+    expect(question.votes).to eq 1
+  end
+
+  it "should decrease vote count when clicking down_vote" do
+    question = Question.create(title: "fuckkk", content: "You")
+    question.down_vote
+    expect(question.votes).to eq -1
+  end
+
 
   describe Question do
     it { should have_many(:answers) }

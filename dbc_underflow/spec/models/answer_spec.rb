@@ -20,6 +20,18 @@ RSpec.describe Answer do
     expect(Answer.count).to eq 0
   end
 
+  it "should add a vote when clicking up_vote" do
+    answer = Answer.create(content: "You")
+    answer.up_vote
+    expect(answer.votes).to eq 1
+  end
+
+  it "should decrease vote count when clicking down_vote" do
+    answer = Answer.create(content: "Youfdgdsgf")
+    answer.down_vote
+    expect(answer.votes).to eq -1
+  end
+
   describe Answer do
     it { should belong_to(:question) }
   end
