@@ -18,14 +18,7 @@
 
 
 
-
-
-
-
-
-
-
-
+<%= render 'form' %>
 
 
 
@@ -41,12 +34,12 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row" id="question-collection">
   <div class="large-12 columns">
     <% @questions.each do |question| %>
-    <div class="panel">
+    <div class="panel" data-question-id="<%=question.id%>">
       <h3><%= link_to "#{question.title}", question_path(question) %></h3>
-      <p><%= question.votes %> votes
+      <p><span><%= question.votes %></span> votes
          <%= question.answers.count %> answers</p>
     </div>
     <% end %>

@@ -5,16 +5,16 @@
 </div>
 
 <div class="row">
-  <div class="large-1 columns" id="question-vote">
-    <%= @question.votes %>
+  <div class="large-1 columns" id="question-vote" data-vote="<%=@question.id%>">
+    <span><%= @question.votes %></span>
   </div>
   <div class="large-11 columns">
     <p>
       <strong>Title:</strong>
       <%= @question.title %>
     </p>
-      <%= link_to "Like", question_upvote_path(@question), method: :patch, :class => "tiny button secondary" %>
-      <%= link_to "Dislike", question_downvote_path(@question), method: :patch, :class => "tiny button secondary" %>
+      <%= link_to "Like", question_upvote_path(@question), method: :patch, remote: true, :class => "tiny button secondary" %>
+      <%= link_to "Dislike", question_downvote_path(@question), method: :patch, remote: true, :class => "tiny button secondary" %>
       <%= link_to 'Edit', edit_question_path(@question), :class => "tiny button secondary" %>
       <%= link_to 'Delete', question_path(@question),
                             method: :delete, data: { confirm: 'Fosho?' }, :class => "tiny button secondary" %>
@@ -34,9 +34,11 @@
           <div class="large-1 columns" id="answer-vote">
        <%= answer.votes %>
   </div>
+
       <%= link_to "Like", question_answer_upvote_path(@question, answer), method: :patch, :class => "tiny button secondary" %>
       <%= link_to "Dislike", question_answer_downvote_path(@question, answer), method: :patch, :class => "tiny button secondary" %>
       <% end %>
+
     </ol>
   </div>
 </div>

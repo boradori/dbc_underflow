@@ -1,7 +1,7 @@
 <div class="row">
   <div class="large-12 columns">
     <div class="form-question">
-      <%= form_for @question do |f| %>
+      <%= form_for @question, remote: true do |f| %>
         <% if @question.errors.any? %>
       <div id="error_explanation">
         <h4><%= pluralize(@question.errors.count, "error") %> prohibited

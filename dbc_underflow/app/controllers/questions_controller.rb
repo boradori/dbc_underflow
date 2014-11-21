@@ -4,6 +4,7 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
+    @question = Question.new
   end
 
   def show
@@ -16,10 +17,18 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    if @question.save
-      redirect_to @question
-    else
-      render :new
+    # if @question.save
+      # redirect_to @question
+    # else
+      # render :new
+      respond_to do |format|
+      if @question.save
+        format.js { render 'create'}
+        format.html { redirect_to questions_path }
+      else
+        format.html {}
+        format.js {}
+      end
     end
   end
 
@@ -46,14 +55,30 @@ class QuestionsController < ApplicationController
 
   def up_vote
     @question = Question.find(params[:id])
-    @question.up_vote
-    redirect_to @question
+
+    respond_to do |format|
+      if @question.up_vote
+        format.js { render 'votes'}
+        format.html { redirect_to @question }
+      else
+        format.html {}
+        format.js {}
+      end
+    end
   end
 
   def down_vote
     @question = Question.find(params[:id])
-    @question.down_vote
-    redirect_to @question
+
+    respond_to do |format|
+      if @question.down_vote
+        format.html { redirect_to @question }
+        format.js { render 'votes'}
+      else
+        format.html {}
+        format.js {}
+      end
+    end
   end
 
   private
