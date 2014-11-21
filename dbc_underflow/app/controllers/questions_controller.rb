@@ -17,10 +17,12 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    @questionlink = @question.title
     # if @question.save
       # redirect_to @question
     # else
       # render :new
+      p @question
       respond_to do |format|
       if @question.save
         format.js { render 'create'}

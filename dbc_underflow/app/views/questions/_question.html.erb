@@ -1,6 +1,9 @@
+<div class="large-12 columns">
+  <div class="panel" data-question-id="<%=@question.id%>">
+  <h3><%= link_to @question.title, question_path(@question) %></h3>
+    <p><span><%= @question.votes %></span> votes
+     <%= @question.answers.count %> answers</p>
+  </div>
+</div>
 
-<div class="panel" data-question-id="<%=@question.id%>">
-  <h3><%= link_to "<%=@question.title%>", question_path(@question) %></h3>
-  <p><span><%= @question.votes %></span> votes
-   <%= @question.answers.count %> answers</p>
- </div>
+
