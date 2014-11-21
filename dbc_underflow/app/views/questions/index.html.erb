@@ -10,14 +10,15 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <li class="active" id="ask-question"><%= link_to 'Ask Question', new_question_path %></li>
+        <li class="active" id="ask-question"><a href="#">Ask A Question</a></li>
     </ul>
   </section>
 </nav>
 
 
-
-<%= render 'form' %>
+<div class="home-ask-question">
+  <%= render 'form' %>
+</div>
 
 
 
@@ -39,9 +40,9 @@
     <div class="panel" data-question-id="<%=question.id%>">
       <h3><%= link_to "#{question.title}", question_path(question) %></h3>
       <p><span><%= question.votes %></span> votes
-         <%= question.answers.count %> answers</p>
-    </div>
-    <% end %>
-  </div>
-</div>
+       <%= question.answers.count %> answers</p>
+     </div>
+     <% end %>
+   </div>
+ </div>
 

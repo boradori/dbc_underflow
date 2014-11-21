@@ -32,3 +32,9 @@
   background-color: gray;
   font-size: 13.5px;
  }
+
+.home-ask-question {
+  display: none;
+  margin-top: 15px;
+  margin-bottom: -30px;
+}

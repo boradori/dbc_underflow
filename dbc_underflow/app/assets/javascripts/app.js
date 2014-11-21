@@ -1,6 +1,9 @@
 $(document).on('page:change', function() {
-  $("#ask-question").click(function(){
-    alert("hehllo");
-  })
+  $( "#ask-question" ).click(function() {
+    $( ".home-ask-question" ).slideToggle( "slow" );
+  });
 
- });
+
+});
+
+
