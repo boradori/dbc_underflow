@@ -1,3 +1,5 @@
+require 'httparty'
+
 class QuestionsController < ApplicationController
 
   def index
